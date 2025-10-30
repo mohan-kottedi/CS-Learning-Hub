@@ -1,0 +1,207 @@
+===============================
+      JAVA OOPs CONCEPTS
+===============================
+
+1️⃣ CLASS & OBJECT
+-----------------
+Class → Blueprint that defines variables and methods.
+Object → Instance of a class.
+
+Example:
+class Car {
+    String brand;
+    void drive() {
+        System.out.println(brand + " is driving...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car c = new Car();
+        c.brand = "Tesla";
+        c.drive();
+    }
+}
+
+
+2️⃣ ENCAPSULATION
+-----------------
+Definition:
+Wrapping data (variables) and code (methods) together.
+
+Use private variables + public getters/setters.
+
+Example:
+class BankAccount {
+    private double balance;
+    public void deposit(double amount) { balance += amount; }
+    public double getBalance() { return balance; }
+}
+
+
+3️⃣ INHERITANCE
+-----------------
+Definition:
+One class acquires properties/methods of another using "extends".
+
+Example:
+class Animal {
+    void eat() { System.out.println("Eating..."); }
+}
+class Dog extends Animal {
+    void bark() { System.out.println("Barking..."); }
+}
+
+Use: Code reuse, logical hierarchy.
+
+
+4️⃣ POLYMORPHISM
+-----------------
+Meaning: "Many forms" – one method behaves differently.
+
+Types:
+1. Compile-time (Method Overloading)
+   class MathUtil {
+       int add(int a, int b) { return a + b; }
+       double add(double a, double b) { return a + b; }
+   }
+
+2. Runtime (Method Overriding)
+   class Animal {
+       void sound() { System.out.println("Animal sound"); }
+   }
+   class Dog extends Animal {
+       @Override
+       void sound() { System.out.println("Dog barks"); }
+   }
+
+Use: Flexibility and dynamic behavior.
+
+
+5️⃣ ABSTRACTION
+-----------------
+Hiding internal details, showing only essentials.
+
+Achieved by:
+1. Abstract Classes
+2. Interfaces
+
+Example (Abstract Class):
+abstract class Shape {
+    abstract void draw();
+    void info() { System.out.println("Shape info"); }
+}
+class Circle extends Shape {
+    void draw() { System.out.println("Drawing Circle"); }
+}
+
+Example (Interface):
+interface Payment {
+    void pay();
+}
+class CreditCard implements Payment {
+    public void pay() { System.out.println("Pay by card"); }
+}
+
+
+6️⃣ THIS & SUPER
+-----------------
+this → Refers to current object.
+super → Refers to parent object.
+
+Example:
+class Animal {
+    String name = "Animal";
+}
+class Dog extends Animal {
+    String name = "Dog";
+    void show() {
+        System.out.println(super.name); // Parent
+        System.out.println(this.name);  // Current
+    }
+}
+
+
+7️⃣ CONSTRUCTOR
+-----------------
+Used to initialize objects.
+
+Types:
+- Default
+- Parameterized
+- Copy (by convention)
+
+Example:
+class Student {
+    String name;
+    Student(String n) { name = n; }
+}
+
+
+8️⃣ ACCESS MODIFIERS
+-----------------
+public      → Accessible everywhere
+protected   → Same package + subclasses
+default     → Same package only
+private     → Same class only
+
+
+9️⃣ PACKAGES
+-----------------
+Used to group related classes.
+
+Example:
+package bank;
+public class Account { }
+
+Import:
+import bank.Account;
+
+
+10️⃣ OBJECT CLASS
+-----------------
+All classes inherit from Object class.
+
+Common methods:
+toString(), equals(), hashCode(), clone()
+
+
+===============================
+OOPs 4 MAIN PILLARS
+===============================
+1. Encapsulation → Data hiding (private + getters/setters)
+2. Inheritance → Reuse code (extends)
+3. Polymorphism → Many forms (overload/override)
+4. Abstraction → Hide details (abstract/interface)
+
+
+===============================
+EXAMPLE SUMMARY
+===============================
+interface Vehicle {
+    void start();
+}
+
+abstract class Car implements Vehicle {
+    abstract void fuelType();
+    void wheels() { System.out.println("4 wheels"); }
+}
+
+class Tesla extends Car {
+    void fuelType() { System.out.println("Electric"); }
+    public void start() { System.out.println("Car started"); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Tesla();
+        myCar.start();
+        myCar.fuelType();
+        myCar.wheels();
+    }
+}
+
+Output:
+Car started
+Electric
+4 wheels
